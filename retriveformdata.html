@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<script type="text/javascript">
+			function loadform()
+			{
+				// alert("Welcome");
+
+
+				var name=document.createElement("input");
+				name.setAttribute("type","text");
+				name.required = true;	//required
+				// name.style.color="red"; //css
+				name.addEventListener("blur",checkname);
+					function checkname()
+					{
+						var n = /^[A-Za-z]+$/;
+						if(name.value=="")
+						{
+							alert("please enter your name");
+						}
+						else if(!name.value.match(n))
+						{
+							alert("please valid name");
+							name.value="";
+						}
+					}
+				name.setAttribute("placeholder","Enter Name");
+				
+
+				var email=document.createElement("input");
+				email.setAttribute("type","email");
+				email.required = true;
+				email.addEventListener("blur",checkemail);
+					function checkemail()
+					{
+						var n = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+						if(email.value=="")
+						{
+							alert("please enter email id");
+						}
+						else if(!email.value.match(n))
+						{
+							alert("please valid email");
+							email.value="";
+						}
+					}
+				email.setAttribute("placeholder","Enter Email");
+				
+
+				var number=document.createElement("input");
+				number.setAttribute("type","number");
+				number.required = true;
+				number.addEventListener("blur",checknumber);
+					function checknumber()
+					{
+						var n = /^[0-9]{10}$/;
+						if(number.value=="")
+						{
+							alert("please enter Number");
+						}
+						else if(!number.value.match(n))
+						{
+							alert("please valid Number");
+							number.value="";
+						}
+					}
+				number.setAttribute("placeholder","Enter Number");
+				
+				var password=document.createElement("input");
+				password.setAttribute("type","password");
+				// number.required = true;
+				// number.addEventListener("blur",checknumber);
+				// 	function checknumber()
+				// 	{
+				// 		var n = /^[0-9]{10}$/;
+				// 		if(number.value=="")
+				// 		{
+				// 			alert("please enter Number");
+				// 		}
+				// 		else if(!number.value.match(n))
+				// 		{
+				// 			alert("please valid Number");
+				// 			number.value="";
+				// 		}
+				// 	}
+				password.setAttribute("placeholder","Enter Password");
+				// password.insertAdjacentElement("beforebegin", number);
+
+				var submit=document.createElement("input");
+				submit.setAttribute("type","submit");
+				document.body.appendChild(name);
+				document.body.appendChild(email);
+				document.body.appendChild(number);
+				document.body.appendChild(password);
+				document.body.appendChild(submit);
+				submit.addEventListener("click",cookie);
+				function cookie(){
+					var set="  Name:-"+ name.value + "  Email:-"+ email.value + "  Number:-"+number.value;
+					document.cookie=set;
+					document.write(document.cookie);
+				}
+			}
+		</script>
+	</head>
+	<body onload="loadform();">
+
+	</body>
+</html>
